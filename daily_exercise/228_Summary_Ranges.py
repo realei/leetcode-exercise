@@ -1,30 +1,24 @@
 class Solution:
-    def summaryRanges(self, nums: List[int]) -> List[str]:
-        if not nums:
-            return []
+	def summaryRanges(self, nums: List[int]) -> List[str]:
 
-        res = []
-        stack = []
-        for i in range(len(nums)):
-            if not stack:
-                stack.append(nums[i])
-            elif nums[i] - stack[-1] == 1:
-                stack.append(nums[i])
-            else:
-                if len(stack) == 1:
-                    res.append(str(stack.pop()))
-                    stack.append(nums[i])
-                else:
-                    res.append("->".join([str(stack.pop(0)), str(stack.pop())]))
-                    stack = []
-                    stack.append(nums[i])
+		start = 0
+		end = 0
 
-        if len(stack) == 1:
-            res.append(str(stack.pop()))
-            stack.append(nums[i])
-        else:
-            res.append("->".join([str(stack.pop(0)), str(stack.pop())]))
-            stack = []
-            stack.append(nums[i])
+		result = []
 
-        return res
+		while start < len(nums) and end<len(nums):
+
+			if end+1 < len(nums) and nums[end]+1 == nums[end+1]:
+				end=end+1
+
+			else:
+				if start == end:
+					result.append(str(nums[start]))
+					start = start + 1
+					end = end + 1
+				else:
+					result.append(str(nums[start])+'->'+str(nums[end]))
+					start = end + 1
+					end = end + 1
+
+		return result
