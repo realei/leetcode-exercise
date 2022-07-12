@@ -34,7 +34,7 @@ class Solution:
         res = 0
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == '0':
+                if grid[i][j] == 0:
                     continue
                 res += bfs(grid, i, j)
         return res
