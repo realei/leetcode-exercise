@@ -1,6 +1,6 @@
 func twoSum(nums []int, target int) []int {
-    var hashMap map[int]int
-    hashMap = make(map[int]int)
+    // constant space
+    hashMap := make(map[int]int, len(nums))
 
     for k, v := range nums {
         if val, ok := hashMap[target - v]; ok {
