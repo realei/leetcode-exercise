@@ -1,6 +1,5 @@
-func findDuplicates(nums []int) []int {
-    var res []int
-    seen := make(map[int]int) 
+func findDuplicates(nums []int) (res []int) {
+    seen := make(map[int]int, len(nums)) 
 
     for _, v := range nums {
         _, ok := seen[v]
